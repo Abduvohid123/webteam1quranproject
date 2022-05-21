@@ -36,21 +36,26 @@ data.data.forEach((e)=>{
 
 
 async function  oyatlar(id){
+    let ul =document.querySelector('#details .list-group');
 
+    ul.innerHTML=''
+    document.querySelector('.loader').classList.remove('d-none')
     show_hide('details')
     let uz =await get(`https://api.alquran.cloud/v1/surah/${id}/uz.sodik`)
     let arab =await get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
  
-    let ul =document.querySelector('#details .list-group');
 
 
     let arab_massiv=arab.data.ayahs;
     uz.data.ayahs.forEach((e,i)=>{
         ul.innerHTML+=`
         <li class="list-group-item">
-        <div>${e.text}</div>
+        <div>${i+1}) ${e.text}</div>
         <div style="text-align:end">${arab_massiv[i].text}</div>
     </li>`
-    })
+    });
+
+    document.querySelector('.loader').classList.add('d-none')
+    
 
 }
