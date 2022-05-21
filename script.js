@@ -50,12 +50,56 @@ async function  oyatlar(id){
     uz.data.ayahs.forEach((e,i)=>{
         ul.innerHTML+=`
         <li class="list-group-item">
+        <audio  controls>
+  <source src="${arab_massiv[i].audio}" type="audio/mpeg">
+</audio>
         <div>${i+1}) ${e.text}</div>
         <div style="text-align:end">${arab_massiv[i].text}</div>
     </li>`
     });
 
+    document.querySelectorAll('#details .list-group audio').forEach((e,i)=>{
+        e.onended=()=>{
+        
+            document.querySelectorAll('#details .list-group audio')[i+1].play()
+        }
+    })
+
     document.querySelector('.loader').classList.add('d-none')
     
 
 }
+
+
+function yodlash(){
+
+    let input = document.getElementById('cut').value.split('-');
+
+    let begin= input[0]
+    let end= input[1]
+
+    document.querySelectorAll('#details .list-group audio')[begin].play();
+
+    document.querySelectorAll('#details .list-group audio')[end].onended=()=>{
+        document.querySelectorAll('#details .list-group audio')[begin].play();
+
+    }
+}
+
+function search2(){
+    
+
+    let input = document.getElementById('c').value
+    
+
+    document.querySelectorAll('#details li').forEach(e=>{
+        if(!e.innerText.includes(input)){
+            e.classList.add('d-none')
+        }else{
+            e.classList.remove('d-none')
+
+        }
+    })
+}
+
+

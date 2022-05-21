@@ -17,7 +17,7 @@
 <div class="loader d-none">
     <div class="lds-hourglass"></div>
 </div>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">
         <ul class="navbar-nav">
             <li onclick="show_hide('Home')" class="nav-item active">
                 <a class="nav-link" href="#">Home</a>
@@ -28,13 +28,14 @@
             <li onclick="suralar()"  class="nav-item">
                 <a class="nav-link" href="#">Suralar</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Search</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sozlamalar</a>
+           
+            <li  data-toggle="modal" data-target="#myModal" class="nav-item">
+                <a class="nav-link2" href="#">Yodlash</a>
             </li>
         </ul>
+        <form class="form-inline" action="/action_page.php">
+            <input onkeyup="search2()"  id="c" class="form-control mr-sm-2" type="text" placeholder="Search">
+          </form>
     </nav>
 
     <div class="container">
@@ -75,8 +76,7 @@
 </div>
         
     </div>
-    <div class="d-none" id="Sozlamalar"></div>
-    <div class="d-none" id="Search"></div>
+   
     <div class="d-none" id="Juzlar"></div>
     <div class="d-none mt-2" id="details">
      
@@ -91,6 +91,7 @@
 
 
 
+    <script src="./modal.js"></script>
     <script src="./script.js"></script>
 </body>
 
