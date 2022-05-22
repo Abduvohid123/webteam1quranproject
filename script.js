@@ -1,6 +1,6 @@
-function show_hide(selector){
-    document.querySelectorAll('.nav-link').forEach(e=>{
-           document.getElementById(e.innerHTML).classList.add('d-none')
+function show_hide(selector,massiv){
+    massiv.forEach(e=>{
+           document.getElementById(e).classList.add('d-none')
     });
     document.getElementById(selector).classList.remove('d-none')
 
@@ -16,7 +16,7 @@ async function get(link){
 
 
  async function suralar(){
-    show_hide('Suralar')
+    show_hide('Suralar',['details','Home'])
 let data =await get('http://api.alquran.cloud/v1/surah');
 
 
@@ -40,7 +40,7 @@ async function  oyatlar(id){
 
     ul.innerHTML=''
     document.querySelector('.loader').classList.remove('d-none')
-    show_hide('details')
+    show_hide('details',['Home','Suralar'])
     let uz =await get(`https://api.alquran.cloud/v1/surah/${id}/uz.sodik`)
     let arab =await get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
  
